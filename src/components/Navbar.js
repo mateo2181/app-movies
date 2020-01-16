@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search/Search";
 
 const Navbar = () => {
   return (
@@ -12,8 +13,8 @@ const Navbar = () => {
         />
         <div className="font-semibold text-xl tracking-tight"> MOVIES</div>
       </div>
-      <div className="mt-2 sm:mt-0 w-full self-end block flex-grow flex sm:items-center sm:w-auto">
-        <div className="flex lg:flex-grow">
+      <div className="mt-2 sm:mt-0 w-full self-end block flex sm:items-center sm:w-auto">
+        <div className="flex flex-wrap items-center lg:flex-grow">
           <Link
             to="/popular"
             className="block sm:inline-block lg:mt-0 text-gray-900 mr-4"
@@ -35,6 +36,7 @@ const Navbar = () => {
             {" "}
             Top rated{" "}
           </Link>
+          <Search />
         </div>
       </div>
     </nav>
