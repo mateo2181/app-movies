@@ -20,7 +20,7 @@ const Movie = ({ match }) => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   const getGenres = genres => {
     return genres.map((g, j) => (
