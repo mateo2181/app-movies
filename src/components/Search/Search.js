@@ -4,10 +4,10 @@ import MoviesSearched from "./Movies";
 const Search = () => {
   const [searched, setSearched] = useState("");
   return (
-    <div className="w-full sm:w-48 lg:w-64 mt-2 sm:mt-0 relative">
-      <div className="w-full p-2 bg-white rounded-lg relative">
+    <div className="w-full mt-6 relative">
+      <div className="w-full p-2 bg-white rounded-full relative">
         <input
-          className="focus:outline-none w-full rounded-lg"
+          className="focus:outline-none w-full text-lg px-4 rounded-full"
           type="text"
           autoCapitalize="off"
           autoComplete="off"
