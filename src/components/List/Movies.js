@@ -48,7 +48,7 @@ const Movies = () => {
       </div>
     );
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full">
       <Title text={getTitleMovie(typeMovie) + " Movies"} />
 
       <div className="flex flex-wrap">

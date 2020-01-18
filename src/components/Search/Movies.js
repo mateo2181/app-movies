@@ -48,7 +48,7 @@ const MoviesSearched = ({ textSearched }) => {
                       src={URL_API_IMG + m.poster_path}
                     />
                   </div>
-                  <div>
+                  <div className="text-left">
                     <Link
                       onClick={() => setResultsVisible(false)}
                       className="text-base"
@@ -57,8 +57,7 @@ const MoviesSearched = ({ textSearched }) => {
                       {m.title}
                     </Link>
                     <div className="text-sm text-gray-600">
-                      {" "}
-                      {m.release_date}{" "}
+                      {m.release_date}
                     </div>
                   </div>
                 </div>
