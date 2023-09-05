@@ -3,7 +3,7 @@ import { getMovie } from "../../services/movies";
 import { useParams } from "react-router";
 import { URL_API_IMG } from "../../services/constants";
 import { Link } from "react-router-dom";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from 'react-number-format';
 import { ClipLoader } from "react-spinners";
 
 const Movie = ({ match }) => {
@@ -65,7 +65,7 @@ const Movie = ({ match }) => {
           </div>
           <div className="mb-2 text-base">
             Revenue:
-            <NumberFormat
+            <NumericFormat
               value={movie.revenue}
               displayType={"text"}
               thousandSeparator={true}
