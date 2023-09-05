@@ -35,7 +35,7 @@ const Movie = ({ match }) => {
 
   let data = !movie ? (
     <div className="w-full mt-2 flex justify-center sweet-loading">
-      <ClipLoader sizeUnit={"px"} size={100} color={"#242424"} />
+      <ClipLoader size={100} color={"#242424"} />
     </div>
   ) : (
     <div className="w-full">

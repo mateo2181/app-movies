@@ -1,17 +1,25 @@
 import { URL_API, API_KEY } from "./constants";
+import axios from "axios";
+import { mapMovieData } from '../utils/index';
 
 export const getUrl = function(path) {
-  return `${URL_API}/movie/${path}?api_key=${API_KEY}`;
+  return `${URL_API}/?apikey=${API_KEY}&s=${path}`;
 };
 
 export async function getMovies(typeMovies) {
-  return (await fetch(getUrl(typeMovies))).json();
+  const res = await axios.get(getUrl(typeMovies));
+  console.log(res);
+  const { Search, totalResults } = res.data;
+  return {
+    items: Search.map(mapMovieData),
+    total: totalResults
+  };
 }
 
 export async function getMoviesFiltered(textSearched) {
-  return (await fetch(
-    `${URL_API}/search/movie?query=${textSearched}&api_key=${API_KEY}`
-  )).json();
+  const res = await axios.get(`${URL_API}/search/movie?query=${textSearched}&apikey=${API_KEY}`)
+  console.log(res);
+  return res.data;
 }
 
 export const getMovie = function(id) {

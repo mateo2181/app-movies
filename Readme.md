@@ -1,3 +1,6 @@
+## Movies APP
+Get credentials in https://www.omdbapi.com
+
 ## React Hooks
 
 ```

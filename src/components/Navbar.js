@@ -2,6 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Search from "./Search/Search";
 
+const NavLinkStyles = (isActive) => {
+  return isActive ? "text-gray-900 mx-4 px-4 py-2 rounded-full font-semibold bg-blue-300" : "text-gray-900 mx-4";
+};
+
 const Navbar = () => {
   return (
     <nav className="w-full text-center py-4 px-6">
@@ -17,28 +21,13 @@ const Navbar = () => {
         <Search />
       </div>
       <div className="mt-6 w-full block flex items-center justify-center">
-        <NavLink
-          to="/popular"
-          activeClassName="px-4 py-2 rounded-full font-semibold bg-blue-300"
-          className="text-gray-900 mx-4"
-        >
-          {" "}
-          Popular
+        <NavLink to="/" className={({ isActive }) => NavLinkStyles(isActive)}>
+          All
         </NavLink>
-        <NavLink
-          to="/upcoming"
-          activeClassName="px-4 py-2 rounded-full font-semibold bg-blue-300"
-          className="text-gray-900 mx-4"
-        >
-          {" "}
-          Upcoming{" "}
+        <NavLink to="/upcoming" className={({ isActive }) => NavLinkStyles(isActive)}>
+          Upcoming
         </NavLink>
-        <NavLink
-          to="/top_rated"
-          activeClassName="px-4 py-2 rounded-full font-semibold bg-blue-300"
-          className="text-gray-900 mx-4"
-        >
-          {" "}
+        <NavLink to="/top_rated" className={({ isActive }) => NavLinkStyles(isActive)}>
           Top rated
         </NavLink>
       </div>

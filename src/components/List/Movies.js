@@ -8,7 +8,7 @@ import { useQuery } from "react-query";
 import Title from "../Title";
 
 const Movies = () => {
-  const [typeMovie, setTypeMovie] = useState("popular");
+  const [typeMovie, setTypeMovie] = useState("all");
 
   let location = useLocation();
 
@@ -18,7 +18,7 @@ const Movies = () => {
 
   useEffect(() => {
     let typeMovieAux = location.pathname.substring(1);
-    typeMovieAux = !typeMovieAux ? "popular" : typeMovieAux;
+    typeMovieAux = !typeMovieAux ? "all" : typeMovieAux;
     setTypeMovie(typeMovieAux);
   }, [location]);
 
@@ -31,7 +31,7 @@ const Movies = () => {
       case "upcoming":
         return "Upcoming";
       default:
-        break;
+        return "All";
     }
   };
 
@@ -40,7 +40,6 @@ const Movies = () => {
       <div className="w-full mt-2 flex justify-center sweet-loading">
         <ClipLoader
           className=""
-          sizeUnit={"px"}
           size={100}
           color={"#242424"}
           loading={isLoading}
@@ -52,7 +51,7 @@ const Movies = () => {
       <Title text={getTitleMovie(typeMovie) + " Movies"} />
 
       <div className="flex flex-wrap">
-        {data ? data.results.map((m, i) => <Movie movie={m} key={i} />) : ""}
+        {data ? data.items.map((m, i) => <Movie movie={m} key={i} />) : ""}
       </div>
     </div>
   );
