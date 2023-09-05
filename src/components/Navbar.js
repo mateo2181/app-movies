@@ -24,6 +24,9 @@ const Navbar = () => {
         <NavLink to="/" className={({ isActive }) => NavLinkStyles(isActive)}>
           All
         </NavLink>
+        <NavLink to="/popular" className={({ isActive }) => NavLinkStyles(isActive)}>
+          Popular
+        </NavLink>
         <NavLink to="/upcoming" className={({ isActive }) => NavLinkStyles(isActive)}>
           Upcoming
         </NavLink>

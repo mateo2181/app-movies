@@ -1,5 +1,5 @@
 ## Movies APP
-Get credentials in https://www.omdbapi.com
+Get credentials in https://developer.themoviedb.org/docs
 
 ## React Hooks
 

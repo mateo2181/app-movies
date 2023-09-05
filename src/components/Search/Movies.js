@@ -4,6 +4,7 @@ import { getMoviesFiltered } from "../../services/movies";
 import { useQuery } from "react-query";
 import { URL_API_IMG } from "../../services/constants";
 import { Link } from "react-router-dom";
+
 const MoviesSearched = ({ textSearched }) => {
   const [resultsVisible, setResultsVisible] = useState(false);
   const { data, isLoading, error } = useQuery(
@@ -26,47 +27,47 @@ const MoviesSearched = ({ textSearched }) => {
         >
           {isLoading ? (
             <div className="w-full mt-2 flex justify-center sweet-loading">
-              <ClipLoader
-                className=""
-                sizeUnit={"px"}
-                size={70}
-                color={"#242424"}
-                loading={isLoading}
-              />
+              <ClipLoader size={70} color={"#242424"} loading={isLoading}/>
             </div>
           ) : (
-            ""
-          )}
-          {data
-            ? data.results.map((m, i) => (
-                <div key={m.id} className="w-full flex border-b py-1">
-                  <div className="pr-4">
-                    <img
-                      style={{ minWidth: "4rem" }}
-                      className="h-24 w-16 rounded object-cover"
-                      alt={m.title}
-                      src={URL_API_IMG + m.poster_path}
-                    />
-                  </div>
-                  <div className="text-left">
-                    <Link
-                      onClick={() => setResultsVisible(false)}
-                      className="text-base"
-                      to={"/movie/" + m.id}
-                    >
-                      {m.title}
-                    </Link>
-                    <div className="text-sm text-gray-600">
-                      {m.release_date}
+              data.total > 0
+                ? 
+                ( data.items.map((m, i) => (
+                    <div key={m.id} className="w-full flex border-b py-1">
+                      <div className="pr-4">
+                        <img
+                          style={{ minWidth: "4rem" }}
+                          className="h-24 w-16 rounded object-cover"
+                          alt={m.title}
+                          src={URL_API_IMG + m.poster}
+                        />
+                      </div>
+                      <div className="text-left">
+                        <Link
+                          onClick={() => setResultsVisible(false)}
+                          className="text-base"
+                          to={"/movie/" + m.id}
+                        >
+                          {m.title}
+                        </Link>
+                        <div className="text-sm text-gray-600">
+                          {m.release_date}
+                        </div>
+                      </div>
                     </div>
+                  ))
+                )
+                :
+                (
+                  <div className="w-full h-60">
+                      No results.
                   </div>
-                </div>
-              ))
-            : ""}
+                )
+            )
+            }
         </div>
-      ) : (
-        ""
-      )}
+      ) : ( "" )
+      }
     </div>
   );
 };

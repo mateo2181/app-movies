@@ -11,28 +11,11 @@ const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    // <Router>
-    //   <div className="bg-gray-200">
-    //     <div className="min-h-screen max-w-4xl mx-auto px-2">
-    //       <Navbar />
-    //       <Switch>
-    //         <Route key={1} path="/movie/:id">
-    //           <Movie />
-    //         </Route>
-    //         <Route key="2" path="/" component={Movies} />
-    //         <Route key="3" path="/upcoming" render={() => <Movies />} />
-    //         <Route key="4" path="/top_rated" component={Movies} />
-    //       </Switch>
-    //     </div>
-    //   </div>
-    // </Router>
     <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path="/" element={<Layout />}>
-            {/* <Route index element={<Home />} /> */}
-            {/* <Route path="about" element={<About />} /> */}
-            {/* <Route path="dashboard" element={<Dashboard />} /> */}
           <Route key="2" index path="/" element={<Movies />} />
+          <Route key="3" path="/popular" element={<Movies />} />
           <Route key="3" path="/upcoming" element={<Movies />} />
           <Route key="4" path="/top_rated" element={<Movies />} />
           <Route key="1" path="/movie/:id" element={<Movie />} />

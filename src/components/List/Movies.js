@@ -8,7 +8,7 @@ import { useQuery } from "react-query";
 import Title from "../Title";
 
 const Movies = () => {
-  const [typeMovie, setTypeMovie] = useState("all");
+  const [typeMovie, setTypeMovie] = useState("now_playing");
 
   let location = useLocation();
 
@@ -18,7 +18,7 @@ const Movies = () => {
 
   useEffect(() => {
     let typeMovieAux = location.pathname.substring(1);
-    typeMovieAux = !typeMovieAux ? "all" : typeMovieAux;
+    typeMovieAux = !typeMovieAux ? "now_playing" : typeMovieAux;
     setTypeMovie(typeMovieAux);
   }, [location]);
 

@@ -8,16 +8,17 @@ const Movie = ({ movie }) => (
         <img
           className="h-48 w-full object-cover"
           alt={movie.title}
-          src={movie.poster}
+          src={URL_API_IMG + movie.poster}
         />
         <div className="p-2">
           <div className="flex justify-between">
             <div> {movie.title} </div>
           </div>
-          <div className="text-gray-600">
-            <strong>{movie.year} </strong>
+          <div className="text-gray-6 00">
+            <span className="text-sm"> Score: </span>
+            <strong>{movie.vote_average} </strong>
           </div>
-          {/* <div className="text-gray-700 text-xs"> {movie.release_date} </div> */}
+          <div className="text-gray-700 text-xs"> {movie.release_date} </div>
         </div>
       </div>
     </Link>
