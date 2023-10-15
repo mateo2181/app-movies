@@ -4,7 +4,7 @@ import MoviesSearched from "./Movies";
 const Search = () => {
   const [searched, setSearched] = useState("");
   return (
-    <div className="w-full mt-6 relative">
+    <div className="w-full mt-6 mx-auto max-w-xl relative">
       <div className="w-full bg-white border rounded-full relative">
         <input
           className="p-2 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-250 w-full text-lg px-4 rounded-full"

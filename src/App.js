@@ -33,7 +33,7 @@ export default function App() {
 
 function Layout() {
   return (
-      <div className="min-h-screen max-w-4xl mx-auto px-2">
+      <div className="min-h-screen w-full lg:w-1/2 mx-auto px-2">
         <Navbar />
         <div>
           <Outlet />

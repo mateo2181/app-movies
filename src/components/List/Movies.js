@@ -56,7 +56,7 @@ const Movies = () => {
       <Title text={getTitleMovie(typeMovie) + " Movies"} />
       <div className="flex flex-wrap">
           {data.items.map((movie) => (
-            <div className="w-1/2 md:w-1/4 lg:w-1/5 p-2" key={movie.id}> 
+            <div className="w-1/2 md:w-1/4 lg:w-1/4 p-2" key={movie.id}> 
               <Movie>
                 <Link to={"/movie/" + movie.id}>
                   <Movie.Poster title={movie.title} poster={movie.poster} />

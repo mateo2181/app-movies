@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import Search from "./Search/Search";
 
 const NavLinkStyles = (isActive) => {
-  return isActive ? "text-gray-900 mx-4 px-4 py-2 rounded-full font-semibold bg-blue-300" : "text-gray-900 mx-4";
+  return isActive ? "text-gray-900 p-2 rounded-full font-semibold bg-blue-300" : "text-gray-900 mx-4";
 };
 
 const Navbar = () => {
   return (
-    <nav className="w-full text-center py-4 px-6">
+    <nav className="w-full text-center">
       <div className="flex justify-center items-center text-black">
         <img
           className="w-16 mr-4"
@@ -17,7 +17,7 @@ const Navbar = () => {
         />
         <div className="font-semibold text-3xl tracking-tight"> MOVIES</div>
       </div>
-      <div className="text-center mx-auto max-w-2xl w-full">
+      <div className="text-center mx-auto w-full">
         <Search />
       </div>
       <div className="mt-6 w-full block flex items-center justify-center">
