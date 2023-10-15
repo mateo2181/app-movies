@@ -7,14 +7,24 @@ export const getUrl = function(path) {
 };
 
 export async function getMovies(typeMovies) {
-  const res = await axios.get(getUrl(typeMovies));
-  // console.log(res);
-  const { results, total_results, page } = res.data;
-  return {
-    items: results.map(mapMovieData),
-    page: page,
-    total: total_results
-  };
+  // const res = await axios.get(getUrl(typeMovies));
+  // const { results, total_results, page } = res.data;
+  // return {
+  //   items: results.map(mapMovieData),
+  //   page: page,
+  //   total: total_results
+  // };
+  return axios.get(getUrl(typeMovies))
+    .then(res => {
+      const { results, total_results, page } = res.data;
+      return {
+        items: results.map(mapMovieData),
+        page: page,
+        total: total_results
+      };
+    }).catch(e => {
+      return e;
+    })
 }
 
 export async function getMoviesFiltered(textSearched) {

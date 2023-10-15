@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { ClipLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
 import { getMoviesFiltered } from "../../services/movies";
-import { useQuery } from "react-query";
+import { useQuery } from '@tanstack/react-query';
 import { URL_API_IMG } from "../../services/constants";
 import { Link } from "react-router-dom";
 
 const MoviesSearched = ({ textSearched }) => {
   const [resultsVisible, setResultsVisible] = useState(false);
-  const { data, isLoading, error } = useQuery(
-    ["movies", { textSearched }],
-    () => getMoviesFiltered(textSearched)
-  );
+  const { data, isPending, error } = useQuery({ queryKey: ['movies', { textSearched }], queryFn: () => getMoviesFiltered(textSearched) });
 
   useEffect(() => {
     //setTypeMovie(typeMovieAux);
@@ -25,9 +22,9 @@ const MoviesSearched = ({ textSearched }) => {
           style={{ maxHeight: "70vh" }}
           className="absolute overflow-y-scroll shadow left-0 right-0 bottom-auto bg-gray-100 mt-2 rounded-lg p-2 w-auto"
         >
-          {isLoading ? (
+          {isPending ? (
             <div className="w-full mt-2 flex justify-center sweet-loading">
-              <ClipLoader size={70} color={"#242424"} loading={isLoading}/>
+              <MoonLoader color={"#242424"} />
             </div>
           ) : (
               data.total > 0

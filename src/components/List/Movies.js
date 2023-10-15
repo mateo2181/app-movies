@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import Movie from "./Movie";
 import { useLocation } from "react-router";
-import { ClipLoader } from "react-spinners";
+import { Link } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
 import { getMovies } from "../../services/movies";
-import { useQuery } from "react-query";
+import { useQuery } from '@tanstack/react-query';
 import Title from "../Title";
+
+
+const MoviesLoading = () => (
+    <div className="w-full mt-12 flex justify-center sweet-loading">
+      <MoonLoader
+        className=""
+        color={"#242424"}
+      />
+    </div>
+);
 
 const Movies = () => {
   const [typeMovie, setTypeMovie] = useState("now_playing");
 
   let location = useLocation();
 
-  const { data, isLoading, error } = useQuery(["movies", { typeMovie }], () =>
-    getMovies(typeMovie)
-  );
+  const { data, isPending, error } = useQuery({ queryKey: ['movies', { typeMovie }], queryFn: () => getMovies(typeMovie) });
 
   useEffect(() => {
     let typeMovieAux = location.pathname.substring(1);
@@ -35,23 +43,38 @@ const Movies = () => {
     }
   };
 
-  if (isLoading)
-    return (
-      <div className="w-full mt-2 flex justify-center sweet-loading">
-        <ClipLoader
-          className=""
-          size={100}
-          color={"#242424"}
-          loading={isLoading}
-        />
-      </div>
-    );
+  if (isPending) {
+    return <MoviesLoading />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+    
   return (
     <div className="w-full">
       <Title text={getTitleMovie(typeMovie) + " Movies"} />
-
       <div className="flex flex-wrap">
-        {data ? data.items.map((m, i) => <Movie movie={m} key={i} />) : ""}
+          {data.items.map((movie) => (
+            <div className="w-1/2 md:w-1/4 lg:w-1/5 p-2" key={movie.id}> 
+              <Movie>
+                <Link to={"/movie/" + movie.id}>
+                  <Movie.Poster title={movie.title} poster={movie.poster} />
+                  <Movie.Description>
+                    <div className="flex justify-between">
+                      <div> {movie.title} </div>
+                    </div>
+                    <div className="text-gray-6 00">
+                      <span className="text-sm"> Score: </span>
+                      <strong>{movie.vote_average} </strong>
+                    </div>
+                    <div className="text-gray-700 text-xs"> {movie.release_date} </div>  
+                  </Movie.Description> 
+                </Link>
+              </Movie>
+            </div>
+            )
+          )}
       </div>
     </div>
   );
