@@ -35,7 +35,7 @@ const Movie = ({ match }) => {
   }
   
   return (
-      <div className="pt-6 pb-4 max-w-2xl mx-auto">
+      <div data-testid="movie-detail" className="pt-6 pb-4 max-w-2xl mx-auto">
         <div className="w-full">
           <div className="flex items-center justify-between">
             <div className="text-3xl"> Movie Detail </div>

@@ -54,7 +54,7 @@ const Movies = () => {
   return (
     <div className="w-full">
       <Title text={getTitleMovie(typeMovie) + " Movies"} />
-      <div className="flex flex-wrap">
+      <div data-testid="movies-list" className="flex flex-wrap">
           {data.items.map((movie) => (
             <div className="w-1/2 md:w-1/4 lg:w-1/4 p-2" key={movie.id}> 
               <Movie>
